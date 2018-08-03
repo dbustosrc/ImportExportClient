@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/Dynamics.Ax.Application" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/Dynamics.Ax.Application" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://ax2012r3cu11des:8101/DynamicsAx/Services/NOVExportDataFramework?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/Microsoft.Dynamics.Ax.Xpp" />
+  <xs:import schemaLocation="http://ax2012r3cu11des:8101/DynamicsAx/Services/NOVExportDataFramework?xsd=xsd3" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+  <xs:complexType name="NOVFileValueContract">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q1="http://schemas.datacontract.org/2004/07/Microsoft.Dynamics.Ax.Xpp" base="q1:XppObjectBase">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="parmValue" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="NOVFileValueContract" nillable="true" type="tns:NOVFileValueContract" />
+  <xs:complexType name="NOVImportExportFormatContract">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q2="http://schemas.datacontract.org/2004/07/Microsoft.Dynamics.Ax.Xpp" base="q2:XppObjectBase">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="ActionType" type="tns:NOVImportExport" />
+          <xs:element minOccurs="0" name="FileFormatId" nillable="true" type="xs:string" />
+          <xs:element xmlns:q3="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="FileLines" nillable="true" type="q3:ArrayOfstring" />
+          <xs:element minOccurs="0" name="parmFilenameOpen" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="parmFilenameSave" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="NOVImportExportFormatContract" nillable="true" type="tns:NOVImportExportFormatContract" />
+  <xs:simpleType name="NOVImportExport">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Import" />
+      <xs:enumeration value="Export" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="NOVImportExport" nillable="true" type="tns:NOVImportExport" />
+  <xs:complexType name="ArrayOfNOVFileValueContract">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="NOVFileValueContract" nillable="true" type="tns:NOVFileValueContract" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfNOVFileValueContract" nillable="true" type="tns:ArrayOfNOVFileValueContract" />
+</xs:schema>
